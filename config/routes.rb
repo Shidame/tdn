@@ -1,4 +1,7 @@
 Tdn::Application.routes.draw do
+  root :to => 'blogs#index'
+  resources :blogs
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
