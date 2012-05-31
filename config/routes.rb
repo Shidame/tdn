@@ -1,5 +1,12 @@
 Tdn::Application.routes.draw do
-  root :to => 'blogs#index'
+  root to: 'application#home'
+
+  post   '/sign_in',  to: 'sessions#create',  as: 'sign_in'
+  delete '/sign_out', to: 'sessions#destroy', as: 'sign_out'
+  get    '/sign_up',  to: 'users#new',        as: 'sign_up'
+  
+  post   '/users',    to: 'users#create'
+  
   resources :blogs
 
   # The priority is based upon order of creation:

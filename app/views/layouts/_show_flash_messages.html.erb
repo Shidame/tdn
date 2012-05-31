@@ -1,0 +1,18 @@
+<% flash.each do |key, value| %>
+<%   
+case key
+    when :alert
+      type = "warning"
+    when :error
+      type = "error"
+    when :notice
+      type = "success"
+    else
+      type = "info"
+  end
+  %>
+    <div class="alert  alert-<%= type %>">
+      <h4 class="alert-heading"><%= key.capitalize %>:</h4>
+      <%= value %>
+    </div>
+<% end %>

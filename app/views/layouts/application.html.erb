@@ -34,6 +34,9 @@
               <li><%= link_to "Blog", "/blogs"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
+              <% if current_user %>
+              <li><%= link_to "Logout", sign_out_path, method: 'delete'  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -44,10 +47,18 @@
       <div class="content">
         <div class="row">
            <div class="span9">
+              <%= render :partial => 'layouts/show_flash_messages' %>
               <%= yield %>
             </div>
             <div class="span3">
+              <% if !current_user %>
               <div class="well sidebar-nav">
+                <h3>Sign In</h3>
+                <%= render partial: 'users/sign_in_form', user: @user %>
+                <%= link_to "Create an account", sign_up_path %>
+              </div>
+              <% end %>
+               <div class="well sidebar-nav">
                 <h3>About us</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis libero quis massa viverra id semper nulla consequat. Fusce sagittis, neque quis suscipit suscipit, massa metus ultrices orci, ut molestie libero felis et odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum purus a mauris mollis ut lacinia enim pulvinar. Vivamus non dolor id metus accumsan vehicula. Duis vestibulum, turpis in facilisis convallis, sapien mauris lobortis augue, vel feugiat magna elit sed sapien.</p>
               </div><!--/.well -->
