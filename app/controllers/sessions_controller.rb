@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
     
     if user && user.authenticate(params[:session][:password])
       cookies.signed[:token] = user.token
+      redirect_to game_path
     else
       flash[:email] = params[:session][:email]
-      flash[:notice] = 'Wrong email and/or password'
-    end
+      flash[:error] = 'Wrong email and/or password'
       redirect_to root_path
+    end
   end
   
   

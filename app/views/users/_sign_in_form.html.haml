@@ -1,10 +1,9 @@
-= form_for :session, url: sign_in_path do |f|
-  .control-group
-    = f.label :email, :class => 'control-label'
-    .controls
-      = f.text_field :email, :value => flash[:email],  :class => 'text_field'
-  .control-group
-    = f.label :password, :class => 'control-label'
-    .controls
-      = f.password_field :password, :class => 'text_field'
-  = f.submit nil, :class => 'btn btn-primary'
+= simple_form_for :session, url: sign_in_path do |f|
+  - if flash[:error]
+    .alert.alert-error
+      = flash[:error]
+
+  = f.input :email, required: false, autofocus: true, input_html: {value: flash[:email]}
+  = f.input :password, required: false
+
+  = f.button :submit, class: 'btn-primary'

@@ -23,31 +23,18 @@
             %span.icon-bar
           %a.brand{:href => "/"} Terres du Nil
           .container.nav-collapse
-            %ul.nav
-              %li= link_to "Blog", "/blogs"
-            - if current_user
-              %ul.nav.pull-right
-                %li
-                  = link_to sign_out_path, method: 'delete' do
-                    %i.icon-off
-                    Logout
+            %ul.nav.pull-right
+              %li
+                = link_to sign_out_path, method: 'delete' do
+                  %i.icon-off
+                  Logout
           / /.nav-collapse
     .container
       .content
         .row
           .span9
+            %h1 Game section
             = yield
-          .span3
-            - if !current_user
-              .well.sidebar-nav
-                %h3 Sign In
-                = render partial: 'users/sign_in_form', user: @user
-                = link_to "Create an account", sign_up_path
-            .well.sidebar-nav
-              %h3 About us
-              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis libero quis massa viverra id semper nulla consequat. Fusce sagittis, neque quis suscipit suscipit, massa metus ultrices orci, ut molestie libero felis et odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum purus a mauris mollis ut lacinia enim pulvinar. Vivamus non dolor id metus accumsan vehicula. Duis vestibulum, turpis in facilisis convallis, sapien mauris lobortis augue, vel feugiat magna elit sed sapien.
-            / /.well
-          / /span
         / /row
       / /content
       %footer

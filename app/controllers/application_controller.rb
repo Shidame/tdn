@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   def home
     @blogs = Blog.all
     @user = User.new
-
   end
 
   private
