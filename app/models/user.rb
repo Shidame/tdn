@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
+
+  has_one :city
+
   attr_accessible :name, :email, :password, :password_confirmation
 
   validates :name, length: 2..20,
@@ -21,5 +24,18 @@ class User < ActiveRecord::Base
     end while existing_tokens.include?(token)
     
     token
+  end
+
+  def assign_city
+    User.transaction do
+      city = City.new
+      city.name = city.generate_name(self)
+      city.user=(self)
+      city.save!
+    end
+  end
+
+  def to_s
+    "#{name}"
   end
 end

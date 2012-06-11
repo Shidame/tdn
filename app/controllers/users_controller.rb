@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     
     if @user.save
       cookies.signed[:token] = @user.token
-      redirect_to root_url, :notice => "Signed up!"
+
+      @user.assign_city
+      @city = @user.city
+      redirect_to game_path
     else
       render "new"
     end

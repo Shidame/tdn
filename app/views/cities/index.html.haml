@@ -1,0 +1,10 @@
+%h1 List of cities
+%table{class: 'table table-striped'}
+  %tr
+    %th= 'Name'
+    %th= 'Owner'
+  - @cities.each do |city|
+    %tr
+      %td= city.name
+      %td= city.user
+	

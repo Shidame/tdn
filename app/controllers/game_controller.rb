@@ -3,6 +3,6 @@ class GameController < ApplicationController
 
   def home
     @user = current_user
-
+    @city = @user.city
   end
 end

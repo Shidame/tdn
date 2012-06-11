@@ -23,6 +23,9 @@
             %span.icon-bar
           %a.brand{:href => "/"} Terres du Nil
           .container.nav-collapse
+            %ul.nav
+              %li= link_to current_user.city, game_path
+              %li= link_to 'Cities list', cities_path
             %ul.nav.pull-right
               %li
                 = link_to sign_out_path, method: 'delete' do

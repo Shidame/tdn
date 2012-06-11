@@ -10,6 +10,7 @@ Tdn::Application.routes.draw do
   get '/game', to: 'game#home'
   
   resources :blogs
+  resources :cities
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
