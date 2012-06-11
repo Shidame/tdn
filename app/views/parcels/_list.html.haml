@@ -1,0 +1,23 @@
+%h2 Parcels purchased
+%ul.thumbnails
+  - @purchased_parcels.each do |parcel|
+    %li.span1
+      .thumbnails
+        = image_tag "http://placehold.it/90&text=#{parcel.land_type}", class: "thumbnail"
+        .caption
+          %h5= "#{parcel.land_type}"
+          = link_to city_parcel_path(@city.id, parcel.id), method: "get", class: "btn btn-primary" do
+            %i.icon-search
+            Show
+
+%h2 Parcels for Sale
+%ul.thumbnails
+  - @for_sale_parcels.each do |parcel|
+    %li.span1
+      .thumbnails
+        = image_tag "http://placehold.it/90&text=#{parcel.land_type}", class: "thumbnail"
+        .caption
+          %h5= "#{parcel.land_type}"
+          = link_to buy_city_parcel_path(@city.id, parcel.id), method: "get", class: "btn btn-success" do
+            %i.icon-plus
+            Buy

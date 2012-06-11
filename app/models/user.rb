@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
       city.name = city.generate_name(self)
       city.user=(self)
       city.save!
+
+      city.generate_parcels
     end
   end
 

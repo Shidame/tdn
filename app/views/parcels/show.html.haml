@@ -1,0 +1,4 @@
+%h2= "Parcel ##{@parcel.id}"
+= image_tag "http://placehold.it/150&text=#{@parcel.land_type}", class: "thumbnail"
+.well
+  = button_to "Back to city", game_path, method: "get", class: "btn btn-primary"
