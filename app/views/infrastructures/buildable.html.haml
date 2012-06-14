@@ -1,0 +1,10 @@
+%h2 Infrastructures buildable
+%ul
+  - @infrastructures.each do |infrastructure|
+    %li.thumbnails
+      %h3= infrastructure.name
+      = image_tag "http://placehold.it/120&text=#{infrastructure.name}", class: "thumbnail"
+      = simple_form_for [@city, @parcel], url: build_infrastructure_path(city_id: @city.id, parcel_id: @parcel.id), method: 'post'  do |f|
+        = f.hidden_field :infrastructure_id, {value: infrastructure.id}
+
+        = f.submit "Build", class: "btn primary"

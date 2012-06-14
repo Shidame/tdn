@@ -1,6 +1,8 @@
 class City < ActiveRecord::Base
   belongs_to :user
   has_many :parcels
+  has_many :infrastructures, :through => :parcels
+
   attr_accessible :name
 
 
@@ -13,24 +15,20 @@ class City < ActiveRecord::Base
   	"#{name}"
   end
 
-  def generate_parcels
+  def generate_first_parcels
     City.transaction do
-      # create 10 Water parcels
-      (1..10).each do |i|
-        Parcel.create!(land_type: 'water', city: self)
+
+      (1..5).each do |i|
+        Parcel.create!(land_type: 'grassland', city: self, purchased: true)
       end
-      # create 30 Baren lands
-      (1..30).each do |i|
-        Parcel.create!(land_type: 'barren land', city: self)
+      (1..2).each do |i|
+        Parcel.create!(land_type: 'floodplain', city: self, purchased: true)
       end
-      # create 15 grassland parcels
-      (1..15).each do |i|
-        Parcel.create!(land_type: 'grassland', city: self)
-      end
-      # create 10 floodplains
-      (1..10).each do |i|
-        Parcel.create!(land_type: 'floodplain', city: self)
-      end
+
+      Parcel.create!(land_type: 'water', city: self)
+      Parcel.create!(land_type: 'arid land', city: self)
+      Parcel.create!(land_type: 'grassland', city: self)
+      Parcel.create!(land_type: 'floodplain', city: self)
     end
   end
 end

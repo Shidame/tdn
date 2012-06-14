@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.token = User.generate_token
-    
+
     if @user.save
       cookies.signed[:token] = @user.token
 

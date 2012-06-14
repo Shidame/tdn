@@ -1,0 +1,29 @@
+%h2 Infrastructures
+%ul.thumbnails
+  - @infrastructures.each do |infrastructure|
+    %li.span1
+      .thumbnails
+        = image_tag "http://placehold.it/90&text=#{infrastructure.name}", class: "thumbnail"
+        = infrastructure.name
+
+%h2 Buildable parcels
+%ul.thumbnails
+  - @buildable_parcels.each do |parcel|
+    %li.span1
+      .thumbnails
+        = image_tag "http://placehold.it/90&text=#{parcel.land_type}", class: "thumbnail"
+        = parcel.land_type
+        = link_to buildable_infrastructures_path(city_id: parcel.city.id, parcel_id: parcel.id), class: "btn btn-primary" do
+          %i.icon-home
+          Build
+
+%h2 Parcels for sale
+%ul.thumbnails
+  - @available_parcels.each do |parcel|
+    %li.span2
+      .thumbnails
+        = image_tag "http://placehold.it/90&text=#{parcel.land_type}", class: "thumbnail"
+        = parcel.land_type
+        = link_to buy_parcel_path(city_id: parcel.city.id, parcel_id: parcel.id), method: "get", class: "btn btn-primary" do
+          %i.icon-plus
+          Buy

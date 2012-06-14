@@ -1,20 +1,24 @@
 Tdn::Application.routes.draw do
+  get "infrastructures/buildable"
+
   root to: 'application#home'
 
   post   '/sign_in',  to: 'sessions#create',  as: 'sign_in'
   delete '/sign_out', to: 'sessions#destroy', as: 'sign_out'
   get    '/sign_up',  to: 'users#new',        as: 'sign_up'
-  
+
   post   '/users',    to: 'users#create'
 
-  get '/game', to: 'game#home'
-  
+  get '/game', to: 'parcels#index'
+
+  get '/cities', to: 'cities#index'
+  get '/cities/:city_id/parcels/:parcel_id/buy', to: 'parcels#buy', as: 'buy_parcel'
+  get '/cities/:city_id/parcels/:parcel_id/buildable', to: 'infrastructures#buildable', as: 'buildable_infrastructures'
+  post '/cities/:city_id/parcels/:parcel_id/build', to: 'infrastructures#build', as: 'build_infrastructure'
+
   resources :blogs
-  resources :cities do 
-    resources :parcels do
-      get 'buy', on: :member
-    end
-  end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
