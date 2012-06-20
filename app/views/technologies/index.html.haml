@@ -1,0 +1,9 @@
+%h1 Technologies
+%table{class: 'table table-striped'}
+  %tr
+    %th Name
+  - @technologies.each do |technology|
+    %tr
+      %td
+        = technology.name
+        = link_to "Search", discoveries_path(technology_id: technology), method: :post,class: "btn btn-success"

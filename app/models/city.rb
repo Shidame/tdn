@@ -3,7 +3,7 @@ class City < ActiveRecord::Base
   has_many :parcels
   has_many :infrastructures, :through => :parcels
 
-  attr_accessible :name
+  attr_accessible :name, :labroer, :city, :deben
 
 
 

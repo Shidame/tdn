@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 infrastructures = Infrastructure.create([{ name: 'Small house' }, { name: 'Medium house' }, { name: 'Big house' }])
+technologies = Technology.create([{ name: 'Irrigation' }, { name: 'Windmill' }])

@@ -1,4 +1,14 @@
 Tdn::Application.routes.draw do
+  get "technologies/index"
+
+  get "technologies/create"
+
+  get "technologies/destroy"
+
+  get "relationships/create"
+
+  get "relationships/destroy"
+
   get "infrastructures/buildable"
 
   root to: 'application#home'
@@ -15,6 +25,9 @@ Tdn::Application.routes.draw do
   get '/cities/:city_id/parcels/:parcel_id/buy', to: 'parcels#buy', as: 'buy_parcel'
   get '/cities/:city_id/parcels/:parcel_id/buildable', to: 'infrastructures#buildable', as: 'buildable_infrastructures'
   post '/cities/:city_id/parcels/:parcel_id/build', to: 'infrastructures#build', as: 'build_infrastructure'
+
+  resources :technologies
+  resources :discoveries
 
   resources :blogs
 

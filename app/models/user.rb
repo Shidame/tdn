@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :discoveries
+  has_many :technologies, through: :discoveries
   has_one :city
 
   attr_accessible :name, :email, :password, :password_confirmation
@@ -31,6 +33,7 @@ class User < ActiveRecord::Base
       city = City.new
       city.name = city.generate_name(self)
       city.user = self
+      city.deben = 1000
       city.save!
 
       city.generate_first_parcels

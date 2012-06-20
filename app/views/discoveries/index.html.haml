@@ -1,0 +1,7 @@
+%h1 Technologies discovered
+%table{class: 'table table-striped'}
+  %tr
+    %th= 'Name'
+  - @discoveries.each do |discovery|
+    %tr
+      %td= discovery.technology.name
