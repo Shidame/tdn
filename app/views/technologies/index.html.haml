@@ -1,9 +1,19 @@
 %h1 Technologies
 %table{class: 'table table-striped'}
   %tr
+    %th Parents
     %th Name
+    %th Children
   - @technologies.each do |technology|
     %tr
       %td
+        %ul
+        - technology.parents.each do |parent|
+          %li= parent.name
+      %td
         = technology.name
         = link_to "Search", discoveries_path(technology_id: technology), method: :post,class: "btn btn-success"
+      %td
+        %ul
+        - technology.children.each do |child|
+          %li= child.name

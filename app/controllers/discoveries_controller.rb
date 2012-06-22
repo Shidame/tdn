@@ -5,21 +5,24 @@ class DiscoveriesController < GameController
 
   def create
     @technology = Technology.find(params[:technology_id])
-    @discovery = current_user.discoveries.build(technology_id: params[:technology_id])
 
-    if @discovery.save
-      flash[:notice] = "You discovered #{@technology.name}."
+    prerequisites = @technology.parent_ids
+    known_prerequisites = current_user.discoveries.map(&:technology_id)
+    # check if current_user can discover the technology
+    # if he has discovered the previous technologies
+    if !prerequisites.empty? && !(prerequisites - known_prerequisites).empty?
+      flash[:error] = "You dont have all the prerequisites"
       redirect_to discoveries_path
     else
-      flash[:error] = "Technology not discovered"
-      redirect_to discoveries_path
-    end
-  end
+      @discovery = current_user.discoveries.build(technology_id: params[:technology_id])
 
-  def destroy
-    @friendship = current_user.friendships.find(params[:id])
-    @friendship.destroy
-    flash[:notice] = "Removed friendship."
-    redirect_to current_user
+      if @discovery.save
+        flash[:notice] = "You discovered #{@technology.name}."
+        redirect_to discoveries_path
+      else
+        flash[:error] = "Technology not discovered"
+        redirect_to discoveries_path
+      end
+    end
   end
 end
