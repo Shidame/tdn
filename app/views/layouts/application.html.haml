@@ -24,8 +24,10 @@
           %a.brand{:href => "/"} Terres du Nil
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Blog", "/blogs"
-            - if current_user
+              %li= link_to "Home", root_url
+              - if current_user
+                %li= link_to "Game", "/game"
+            -if current_user
               %ul.nav.pull-right
                 %li
                   = link_to sign_out_path, method: 'delete' do

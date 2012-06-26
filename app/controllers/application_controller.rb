@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def home
-    @blogs = Blog.all
-    @user = User.new
+    @articles = Article.order("created_at DESC").last(5)
   end
 
   private

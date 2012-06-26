@@ -1,0 +1,12 @@
+- @articles.each do |article|
+  .row
+    %h2= article.title
+    .span3.offset6= article.created_at.strftime("%d %b. %Y at %H:%M")
+    .span8.well
+      = simple_format(truncate(article.content, length: 100))
+    .span3.offset7
+      = link_to "Read more", article
+      = link_to edit_article_path(article), class: "btn" do
+        %i.icon-pencil
+      = link_to article, class: "btn btn-danger", method: "delete" do
+        %i.icon-trash

@@ -1,13 +1,6 @@
 Tdn::Application.routes.draw do
-  get "technologies/index"
-
-  get "technologies/create"
-
-  get "technologies/destroy"
-
-  get "relationships/create"
-
-  get "relationships/destroy"
+  resources :articles
+  resources :relationships
 
   get "infrastructures/buildable"
 
@@ -28,9 +21,6 @@ Tdn::Application.routes.draw do
 
   resources :technologies
   resources :discoveries
-
-  resources :blogs
-
 
 
   # The priority is based upon order of creation:

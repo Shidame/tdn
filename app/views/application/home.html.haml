@@ -1,1 +1,4 @@
-= render partial: 'blogs/list', blogs: @blogs
+%h1 Latest articles
+= render partial: 'articles/articles'
+
+%p.offset3= link_to "List of All Articles", articles_path, class: "btn"

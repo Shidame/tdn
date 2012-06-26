@@ -1,0 +1,4 @@
+= simple_form_for @article, class: "form-horizontal" do |f|
+  = f.input :title, input_html: { class: "span6" }
+  = f.input :content, input_html: { class: "span6" }
+  = f.button :submit, class: "btn-success"
