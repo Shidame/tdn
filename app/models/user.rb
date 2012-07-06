@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
       city.save!
 
       city.generate_first_parcels
+      city.generate_map
     end
   end
 

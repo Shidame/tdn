@@ -1,6 +1,7 @@
 Tdn::Application.routes.draw do
   resources :articles
   resources :relationships
+  resources :tiles
 
   get "infrastructures/buildable"
 

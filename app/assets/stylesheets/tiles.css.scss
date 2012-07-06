@@ -1,0 +1,48 @@
+// Place all the styles related to the Tiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#maps {
+  position: relative;
+  height: 500px;
+  width: 750px;
+  background-color: #CCCCCC;
+}
+
+#maps > div {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  font-size: 8px;
+}
+#maps > .grid {
+  border: dashed 1px green;
+  height: 24px;
+  width: 24px;
+  margin-top: -1px;
+  margin-left: -1px;
+}
+#maps > .grid:hover {
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  background-color: #00FF00;
+  cursor: pointer;
+}
+
+/*   fields = ['f', 'h', 'w', 'p', 'a'] */
+.field-f{background-color: #999900;}
+.field-h{background-color: #009900;}
+.field-w{background-color: #0033CC;}
+.field-p{background-color: #66CC33;}
+.field-a{background-color: #FFFF66;}
+
+
+@for $i from 1 through 5000 {
+    $x: ($i % 30)+1;
+    $y: ceil($i/30);
+
+    .tile-#{$x}-#{$y} {
+      top: $y * 25px - 25px;
+      left: $x * 25px - 25px;
+    }
+  }
+
