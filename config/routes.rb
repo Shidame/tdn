@@ -3,8 +3,6 @@ Tdn::Application.routes.draw do
   resources :relationships
   resources :tiles
 
-  get "infrastructures/buildable"
-
   root to: 'application#home'
 
   post   '/sign_in',  to: 'sessions#create',  as: 'sign_in'
@@ -13,12 +11,9 @@ Tdn::Application.routes.draw do
 
   post   '/users',    to: 'users#create'
 
-  get '/game', to: 'parcels#index'
+  get '/game', to: 'tiles#index'
 
   get '/cities', to: 'cities#index'
-  get '/cities/:city_id/parcels/:parcel_id/buy', to: 'parcels#buy', as: 'buy_parcel'
-  get '/cities/:city_id/parcels/:parcel_id/buildable', to: 'infrastructures#buildable', as: 'buildable_infrastructures'
-  post '/cities/:city_id/parcels/:parcel_id/build', to: 'infrastructures#build', as: 'build_infrastructure'
 
   resources :technologies
   resources :discoveries

@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
       city.deben = 1000
       city.save!
 
-      city.generate_first_parcels
       city.generate_map
     end
   end

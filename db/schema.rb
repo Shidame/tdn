@@ -39,24 +39,6 @@ ActiveRecord::Schema.define(:version => 20120703063314) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "infrastructures", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "land"
-    t.string   "buildable_on"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "parcels", :force => true do |t|
-    t.string   "land_type"
-    t.boolean  "purchased",         :default => false
-    t.integer  "city_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.integer  "infrastructure_id"
-  end
-
   create_table "relationships", :force => true do |t|
     t.integer  "parent_id"
     t.integer  "child_id"

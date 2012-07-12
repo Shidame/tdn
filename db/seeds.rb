@@ -6,9 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-infrastructures = Infrastructure.create([{ name: 'Small house' }, { name: 'Medium house' }, { name: 'Big house' }])
-
-
 root = Technology.create(name: "Tribes", depth: 0)
 h = Technology.create(name: "Hunting", depth: 1)
 a = Technology.create(name: "Agriculture", depth: 1)
