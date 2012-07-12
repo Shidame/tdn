@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
+    # autolog with first user
+    return @current_user = User.first
+
     return nil if cookies.signed[:token].blank?
     @current_user ||= User.find_by_token(cookies.signed[:token])
   end

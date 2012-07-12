@@ -20,3 +20,8 @@ root.children << [h, a]
 h.children << f
 a.children << [i, g]
 g.children << [s, l]
+
+demo = User.create!(name: "Demo", email: "demo@demo.com", password: "demo", password_confirmation: "demo")
+demo.token = User.generate_token
+demo.assign_city
+
