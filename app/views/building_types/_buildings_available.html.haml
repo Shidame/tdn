@@ -1,0 +1,3 @@
+- @buildings.each do |building|
+  %li
+    = link_to building.name, "#", data: {id: building.id, width: building.width, height: building.height}, class: 'new-building'

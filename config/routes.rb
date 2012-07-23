@@ -2,6 +2,8 @@ Tdn::Application.routes.draw do
   resources :articles
   resources :relationships
   resources :tiles
+  resources :buildings
+  resources :building_types
 
   root to: 'application#home'
 

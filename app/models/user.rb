@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
   def to_s
     "#{name}"
   end
+
+  def available_building_types
+    BuildingType.all
+  end
 end

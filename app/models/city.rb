@@ -1,6 +1,7 @@
 class City < ActiveRecord::Base
   belongs_to :user
   has_many :tiles
+  has_many :buildings
 
   attr_accessible :name, :labroer, :city, :deben
 
@@ -19,7 +20,7 @@ class City < ActiveRecord::Base
     City.transaction do
       200.times do |x|
         50.times do |y|
-          self.tiles.create(x: x, y: y, field_type: fields.sample)
+          self.tiles.create(x: x, y: y, land_type: fields.sample)
         end
       end
     end

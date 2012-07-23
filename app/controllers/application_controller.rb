@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user
+  helper_method :current_user, :current_city
 
   def home
     @articles = Article.order("created_at DESC").last(5)
@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
     return nil if cookies.signed[:token].blank?
     @current_user ||= User.find_by_token(cookies.signed[:token])
   end
+
 end

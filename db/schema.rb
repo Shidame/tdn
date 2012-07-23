@@ -11,13 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703063314) do
+ActiveRecord::Schema.define(:version => 20120712133629) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "building_types", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "land_type_required"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "buildings", :force => true do |t|
+    t.integer  "building_type_id"
+    t.integer  "city_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -56,10 +73,11 @@ ActiveRecord::Schema.define(:version => 20120703063314) do
   create_table "tiles", :force => true do |t|
     t.integer  "x"
     t.integer  "y"
-    t.string   "field_type"
+    t.string   "land_type"
     t.integer  "city_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "building_id"
   end
 
   create_table "users", :force => true do |t|

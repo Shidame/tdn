@@ -21,6 +21,12 @@ h.children << f
 a.children << [i, g]
 g.children << [s, l]
 
+BuildingType.create([ {name: "Hut", description: "A small hut mades of raw materials found here and there...", width: 1, height: 1},
+                      {name: "Big hut", description: "A solid hut, but still a hut...", width: 1, height: 1},
+                      {name: "Clay pit", description: "bla bla bla...", width: 2, height: 2},
+                      {name: "Farm", description: "bla bla bla...", width: 3, height: 3}
+                      ])
+
 demo = User.create!(name: "Demo", email: "demo@demo.com", password: "demo", password_confirmation: "demo")
 demo.token = User.generate_token
 demo.assign_city

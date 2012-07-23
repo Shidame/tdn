@@ -1,4 +1,4 @@
-%h1 Map
+
 = link_to tiles_path(x:@prev_x, y: @current_y), id: "left" do
   %i.icon-arrow-left
 = link_to tiles_path(x: @next_x, y: @current_y), id: "right" do
@@ -12,6 +12,9 @@
   - @tiles.each_with_index do |tile, index|
     - x = index.modulo(@width)
     - y = index/@width
-    %div{class: "tile-#{x+1}-#{y+1} field-#{tile.field_type}"}
-      = "(#{tile.x},#{tile.y})"
-    %div{class: "tile-#{x+1}-#{y+1} grid"}
+    %div{class: "tile-#{x+1}-#{y+1} field-#{tile.land_type}", id: "tile-#{tile.id}" }
+      - building = tile.building
+      - if building
+        =building.building_type.name
+    %div{class: "tile-#{x+1}-#{y+1} grid", data:{id: tile.id, x: x+1, y: y+1}}
+

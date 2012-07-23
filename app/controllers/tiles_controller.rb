@@ -13,10 +13,11 @@ class TilesController < GameController
     max_x = @city.tiles.maximum("x")
     max_y = @city.tiles.maximum("y")
 
-    width  = 30
+    width  = 35
     @width = width
-    height = 20
-    @tiles = @city.tiles.where('x >= ?', x_start).where('x < ?', x_start+width).where('y >= ?', y_start ).where('y < ?', y_start+height).order('y ASC').order('x ASC')
+    height = 15
+    #@tiles = @city.tiles.where('x >= ?', x_start).where('x < ?', x_start+width).where('y >= ?', y_start ).where('y < ?', y_start+height).order('y ASC').order('x ASC').includes(:building => :building_type)
+    @tiles = @city.tiles.range(x_start, y_start, x_start+width-1, y_start+height-1).order('y ASC').order('x ASC').includes(:building => :building_type)
 
     @current_x = x_start
     @current_y = y_start

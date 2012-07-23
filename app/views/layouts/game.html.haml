@@ -55,14 +55,24 @@
     .container
       .content
         .row
-          .span12
-            - [:notice,:error].each do |type|
-              = content_tag(:div, flash[type], :class => type) if flash[type]
-            = yield
+          - [:notice,:error].each do |type|
+            = content_tag(:div, flash[type], :class => type) if flash[type]
+          = yield
         / /row
       / /content
-      %footer
-        %p &copy; Terres du Nil 2012
+    .navbar.navbar-fixed-bottom
+      .navbar-inner
+        .container
+          .container.nav-collapse
+            %ul.nav
+              %li.dropdown
+                = link_to building_types_path, data: {remote: true, target: "#"}, class: "dropdown-toggle" do
+                  %i.icon-home
+                  Buildings
+                  %b.caret
+                %ul.dropdown-menu{id: "buildings"}
+                  %li Loading...
+          / /.nav-collapse
     / /container
     /
       Javascripts
